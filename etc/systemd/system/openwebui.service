@@ -1,0 +1,15 @@
+[Unit]
+Description=Open WebUI
+After=network.target
+
+[Service]
+Type=simple
+User=wwang
+WorkingDirectory=/home/wwang/Documents/openwebui
+ExecStart=/home/wwang/Documents/openwebui/venv/bin/open-webui serve
+Restart=always
+Environment=PYTHONUNBUFFERED=1
+# Add other environment variables here if needed
+
+[Install]
+WantedBy=multi-user.target
