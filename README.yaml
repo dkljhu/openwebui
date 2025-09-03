@@ -1,0 +1,20 @@
+installation:
+  install: Installed openwebui using as PIP package (pip install open-webui)
+  upgrade: To upgrade, run (pip install --upgrade open-webui)
+
+openwebui system service:
+    why: easier to manage start, stop, restart via systemctl
+    edit_service_file: sudo nano /etc/systemd/system/openwebui.service
+    commands:
+      - sudo systemctl enable open-webui
+      - sudo systemctl start openwebui
+      - sudo systemctl stop openwebui
+      - sudo systemctl restart openwebui
+      
+
+nginx:
+  why: using nginx as gateway to support SSL
+  openwebui_port: default port is 8080, nginx is 443, domain copello0.no-ip.biz can be mapped to 192.168.254.65:443
+  nginx_config_file:
+    commmand: sudo nano /etc/nginx/sites-available/openwebui.conf
+
