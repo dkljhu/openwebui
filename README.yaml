@@ -1,4 +1,6 @@
 installation:
+  python: python version 3.11.xx
+    - python -m venv venv
   install: Installed openwebui using as PIP package (pip install open-webui)
     - pip install open-webui
     - pip install -r requirements.txt
@@ -8,7 +10,7 @@ openwebui system service:
     why: easier to manage start, stop, restart via systemctl
     edit_service_file: sudo nano /etc/systemd/system/openwebui.service
     commands:
-      - cp ./etc/systemd/system/openwebui.service /etc/systemd/system/openwebui.service
+      - sudo cp ./etc/systemd/system/openwebui.service /etc/systemd/system/openwebui.service
       - sudo systemctl enable openwebui
       - sudo systemctl start openwebui
       - sudo systemctl stop openwebui
@@ -30,4 +32,9 @@ ollama:
     - Add the following under [Service] - Environment="OLLAMA_HOST=0.0.0.0:11434"
     - sudo systemctl daemon-reexec
     - sudo systemctl restart ollama
+
+content:
+  purpose: ignored from git, but use for RAG within openwebui
+  rsync:
+    - rsync -avzP content/ wwang@192.168.254.xx:~/Documents/openwebui/content/
 
